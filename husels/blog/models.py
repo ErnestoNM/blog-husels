@@ -9,12 +9,12 @@ STATUS = (
 )
 
 class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200, unique=True, verbose_name='Título')
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     updated_on = models.DateTimeField(auto_now= True)
     content = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
